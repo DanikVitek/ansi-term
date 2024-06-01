@@ -1,6 +1,4 @@
 const std = @import("std");
-const fixedBufferStream = std.io.fixedBufferStream;
-const testing = std.testing;
 
 const style = @import("style.zig");
 const Style = style.Style;
@@ -114,6 +112,9 @@ pub fn updateStyle(writer: anytype, new: Style, old: ?Style) !void {
     // End the escape sequence
     try writer.writeAll("m");
 }
+
+const testing = std.testing;
+const fixedBufferStream = std.io.fixedBufferStream;
 
 test "same style default, no update" {
     var buf: [1024]u8 = undefined;

@@ -1,6 +1,4 @@
 const std = @import("std");
-const expect = std.testing.expect;
-const expectEqual = std.testing.expectEqual;
 
 const style = @import("style.zig");
 const Style = style.Style;
@@ -154,6 +152,9 @@ pub fn parseStyle(code: []const u8) ?Style {
         .font_style = font_style,
     };
 }
+
+const expect = std.testing.expect;
+const expectEqual = std.testing.expectEqual;
 
 test "parse empty style" {
     try expectEqual(@as(?Style, null), parseStyle(""));

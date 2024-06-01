@@ -1,6 +1,5 @@
 const std = @import("std");
-const testing = std.testing;
-const fixedBufferStream = std.io.fixedBufferStream;
+
 const esc = "\x1B";
 const csi = esc ++ "[";
 
@@ -77,6 +76,9 @@ pub fn scrollUp(writer: anytype, lines: usize) !void {
 pub fn scrollDown(writer: anytype, lines: usize) !void {
     try writer.print(csi ++ "{}T", .{lines});
 }
+
+const testing = std.testing;
+const fixedBufferStream = std.io.fixedBufferStream;
 
 test "test cursor mode BLINKING_UNDERSCORE" {
     var buf: [1024]u8 = undefined;

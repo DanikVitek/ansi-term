@@ -1,7 +1,5 @@
 const std = @import("std");
 const meta = std.meta;
-const expect = std.testing.expect;
-const expectEqual = std.testing.expectEqual;
 
 pub const ColorRGB = struct {
     r: u8,
@@ -127,6 +125,9 @@ pub const FontStyle = packed struct {
         return fromU11(self.toU11() & ~other.toU11());
     }
 };
+
+const expect = std.testing.expect;
+const expectEqual = std.testing.expectEqual;
 
 test "FontStyle bits" {
     try expectEqual(@as(u11, 0), (FontStyle{}).toU11());
